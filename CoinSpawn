@@ -10,6 +10,6 @@ function Start () {
 //This will create the coin and allow us to modify the object.
     var coinspawn = Instantiate(coinobj, transform.position, transform.rotation);
     
-    //We will now modify the parent of this object to make it the child of this object.
+    //We will now modify the parent of the coin object to make it the child of this object.
     coinspawn.transform.parent = gameObject.transform;
 }
