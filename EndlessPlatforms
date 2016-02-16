@@ -1,0 +1,39 @@
+//Attach this script to the first obstacle/platform.
+//This is a script for an endless runner where the 
+//character is stationary and the obstacles are only moving.
+//I am using platforms with different obstacle patterns for this code.
+//Although it can be modified to use as needed.
+
+
+//This will be your character
+var other : Transform;
+//Check to see if this Platform has already created
+private var spawned=0;
+//This is all the different types of obstacles as prefabs attached
+var planes : GameObject[];
+
+    function Update () { 
+    transform.Translate(Vector3(-5,0,0)* Time.deltaTime); 
+    //check the distance to the character
+        var dist = Vector3.Distance(other.position, transform.position);
+    //if close to the character,create a new instance 
+    //13 units infront of the current platform/obstacle.
+    //Modify as needed
+        if (dist<25){
+            if (spawned==0){
+                spawned=1;
+                Instantiate (planes[Random.Range(0, planes.Length)], transform.position+(transform.right*13), transform.rotation);
+
+            }
+        }
+//destroy platforms once they are too far from the character to save memory.
+//Modify as needed
+        if (transform.position.x<-15){
+            Destroy(gameObject);
+        }
+
+    
+    
+    }
+    
+}
