@@ -1,0 +1,15 @@
+//Code for spawning a coin on moving platforms.
+//The coin must be a child of the spawn so it follows its transform.
+//Within the platforms there is a empty object which this script is attached to.
+//that empty object is a child of the platform. This is where the coin will spawn.
+
+//Attach the coin prefab to var.
+var coinobj : GameObject;
+
+function Start () {
+//This will create the coin and allow us to modify the object.
+    var coinspawn = Instantiate(coinobj, transform.position, transform.rotation);
+    
+    //We will now modify the parent of this object to make it the child of this object.
+    coinspawn.transform.parent = gameObject.transform;
+}
